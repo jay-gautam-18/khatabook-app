@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+
+
+</head>
+<body>
+   <div class="nav w-full bg-red-300 flex justify-between  p-5 ">
+    <h1>khatabook</h1>
+    <a href="/">home</a>
+    <a href="/create">create</a>
+   </div>
+   
+   
+   <div class="hisaab absolute top-[30%] left-[10%] bg-blue-300 rounded lg:h-[40%] h-[60%] w-[80%] lg:w-[50%]">
+       <h1 class="font-[600] text-xl p-4">HISAAB ENTEReD</h1>
+        <div class="h-[90%] w-[98%] flex flex-col gap-4 text-white">
+          <%  if(files.length==0){ %>
+                <h1 class="text-center text-black text-xl uppercase">no files found</h1>
+                <a href="/create" class="bg-blue-900 p-5 rounded  ">create hissab</a>
+
+            <% } else { %>
+           <% files.forEach(file =>{ %>
+            <div class="h-8 w-full mx-1  p-1 rounded bg-blue-700 flex justify-between " >
+                <h1><%= file.split(".")[0] %></h1>
+                <div class="flex gap-2">
+                    <a href="/show/<%= file%>" class="text-xl text-black ri-arrow-right-circle-fill"></a>
+                    <a href="/delete/<%= file%>" class="text-xl text-black ri-delete-bin-7-fill"></a>
+                    <a  href="/edit/<%= file%>" class="text-xl text-black ri-edit-fill"></a>
+                </div>
+            </div>
+            <% }) %> 
+            <%}%>   
+        </div>
+    </div>
+
+</body>
+</html>

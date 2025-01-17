@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="nav w-full bg-red-300 flex justify-between  p-5 ">
+        <h1>khatabook</h1>
+        <a href="/">home</a>
+        <a href="/create">create</a>
+       </div>
+    <h1 class="m-4 text-xl font-[700] uppercase">you're editing <span class="text-blue-600"><%=filename.split('.')[0]%></span> file</h1>
+    <form action="/update/<%=filename%>" method="post" class="flex flex-col">
+        <textarea name="filedata" placeholder="kiska hisaab kar rhe ho aaj ??" class=" m-4 h-[150px] w-[250px] p-1 bg-zinc-300 rounded" ><%=data%></textarea>
+        <button type="submit" class="m-4 p-2 text-white bg-blue-600 rounded w-[100px] cursor-pointer"> update file </button>
+    </form>
+</body>
+</html>

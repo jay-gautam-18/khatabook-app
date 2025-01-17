@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="nav w-full bg-red-300 flex justify-between  p-5 ">
+        <h1>khatabook</h1>
+        <a href="/">home</a>
+        <a href="/create">create</a>
+       </div>
+    <h1 class="m-4 text-xl font-[700]">hisaab of <span class="text-blue-600"><%=filename.split('.')[0] %></span> date</h1>
+    <h3 class="text-xl font-[500] m-4">"<%=data%>"</h3>
+    <a href="/edit/<%=filename%>" class="text-white bg-blue-400 m-4 px-3 py-1">edit</a>
+</body>
+</html>

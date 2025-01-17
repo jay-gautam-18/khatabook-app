@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="nav w-full bg-red-300 flex justify-between  p-5 ">
+        <h1>khatabook</h1>
+        <a href="/">home</a>
+        <a href="/create">create</a>
+       </div>
+    <h1 class="m-4 text-xl font-[700] uppercase">create a new hissab</h1>
+    <form action="/create" method="post" class="flex flex-col">
+        <textarea name="filename" placeholder="hissab ka naam batao"class=" m-4 h-[30px] w-[250px] bg-zinc-100 rounded" ></textarea>
+        <textarea name="filedata" placeholder="kiska hisaab kar rhe ho aaj ??" class=" m-4 p-1 h-[150px] w-[250px] bg-zinc-100 rounded" ></textarea>
+        <input type="submit" class="m-4 p-2 bg-blue-300 rounded w-[100px] cursor-pointer">
+    </form>
+</body>
+</html>
