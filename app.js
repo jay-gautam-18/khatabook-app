@@ -87,6 +87,7 @@ app.post('/create',async (req,res)=>{
     let shr = shareable === 'on' ? true : false
     let ed = edit === 'on' ? true : false
     
+    
     await hisaabModels.create({
         name,
         data,
@@ -99,18 +100,41 @@ app.post('/create',async (req,res)=>{
     res.redirect('/home')
 
 })
-app.get('/show',(req,res)=>{
-  res.render('show')
-})
-
-app.get('/edit',(req,res)=>{
-    res.render('edit')
-})
-app.post('/update',(req,res)=>{
+app.get('/show/:name', async (req, res) => {
+    let hisaab = await hisaabModels.findOne({name:req.params.name})
+    res.render('show',{hisaab})
     
+   
+})
+app.get('/edit/:name', async (req,res)=>{
+    let hisaab = await hisaabModels.findOne({name:req.params.name})
+    res.render('edit',{hisaab});
+})
+app.post('/update/:_id', async (req,res)=>{
+    try{
+    let {name , data ,encryption,edit,shareable, passcode} =req.body
+    let enc = encryption === 'on';
+    let shr = shareable === 'on' ;
+    let ed = edit === 'on';
+    let newHisaab = await hisaabModels.findOneAndUpdate({_id:req.params._id},{
+        name,
+        data,
+        encryption: enc,
+        shareable:shr,
+        edit:ed,
+        passcode
+    },{new:true})
+    console.log(newHisaab);
+    
+    res.redirect('/home')
+} catch(err){
+    console.log(err);
+}
 })
 
-app.get("/delete",(req,res)=>{
+app.get("/delete/:name", async (req,res)=>{
+    await hisaabModels.findOneAndDelete({name:req.params.name})
+    res.redirect('/home')
    
 })
 
