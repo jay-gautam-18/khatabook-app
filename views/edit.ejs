@@ -47,27 +47,27 @@
       <!-- Hisaab Name -->
       <div class="mb-4">
         <label for="hisaabName" class="block text-lg font-semibold mb-2">Hisaab Name</label>
-        <textarea id="hisaabName" class="w-full border border-gray-300 dark:border-gray-700 rounded-lg p-2 dark:bg-gray-700 dark:text-gray-100" rows="1" placeholder="Enter Hisaab name"><%= hisaab.name  %> </textarea>
+        <textarea id="hisaabName" name="name" class="w-full border border-gray-300 dark:border-gray-700 rounded-lg p-2 dark:bg-gray-700 dark:text-gray-100" rows="1" placeholder="Enter Hisaab name"><%= hisaab.name  %> </textarea>
       </div>
 
       <!-- Hisaab Data -->
       <div class="mb-4">
         <label for="hisaabData" class="block text-lg font-semibold mb-2">Hisaab Data</label>
-        <textarea id="hisaabData" class="w-full border border-gray-300 dark:border-gray-700 rounded-lg p-2 dark:bg-gray-700 dark:text-gray-100" rows="4" placeholder="Enter Hisaab data"><%= hisaab.data  %> </textarea>
+        <textarea id="hisaabData" name="data" class="w-full border border-gray-300 dark:border-gray-700 rounded-lg p-2 dark:bg-gray-700 dark:text-gray-100" rows="4" placeholder="Enter Hisaab data"><%= hisaab.data  %> </textarea>
       </div>
 
       <!-- Encrypt Checkbox -->
       <% if(hisaab.encryption === true){ %>
       <div class="mb-4">
         <label class="inline-flex items-center">
-          <input type="checkbox" id="encryptCheckbox" class="mr-2" >
+          <input type="checkbox" name="encryption" id="encryptCheckbox" class="mr-2" >
           Encrypt this file ? - previously this file is encrypted
         </label>
       </div>
       <% } else{ %>
       <div class="mb-4">
         <label class="inline-flex items-center">
-          <input type="checkbox" id="encryptCheckbox" class="mr-2" >
+          <input type="checkbox" name="encryption" id="encryptCheckbox" class="mr-2" >
           Encrypt this file ?- previously this file is not encrypted
         </label>
       </div>
@@ -76,7 +76,7 @@
       <!-- Passcode Field  -->
       <div id="passcodeField" class=" mb-4">
         <label for="passcode" class="block text-lg font-semibold mb-2">change Passcode ?</label>
-        <textarea type="password" id="passcode" class="w-full border border-gray-300 dark:border-gray-700 rounded-lg p-2 dark:bg-gray-700 dark:text-gray-100" placeholder="Enter passcode"><%= hisaab.passcode %></textarea>
+        <textarea type="password" name="passcode" id="passcode" class="w-full border border-gray-300 dark:border-gray-700 rounded-lg p-2 dark:bg-gray-700 dark:text-gray-100" placeholder="Enter passcode"><%= hisaab.passcode %></textarea>
       </div>
 
       <!-- Shareable Checkbox -->
@@ -84,14 +84,14 @@
 
       <div class="mb-4">
         <label class="inline-flex items-center">
-          <input type="checkbox" id="shareableCheckbox" class="mr-2" >
+          <input type="checkbox" name="shareable" id="shareableCheckbox" class="mr-2" >
           Shareable file ? - previosly this file can be shared
         </label>
       </div>
       <% } else{ %>
         <div class="mb-4">
           <label class="inline-flex items-center">
-            <input type="checkbox" id="shareableCheckbox" class="mr-2" >
+            <input type="checkbox" name="shareable" id="shareableCheckbox" class="mr-2" >
             Shareable file ? - previously this file can't be shared
           </label>
         </div>
@@ -101,14 +101,14 @@
 
       <div id="editPermissionField" class="mb-4">
         <label class="inline-flex items-center">
-          <input type="checkbox" id="editPermissionCheckbox" class="mr-2">
+          <input type="checkbox" name="edit" id="editPermissionCheckbox" class="mr-2">
           Allow edit permissions ? - previously this file can be edited
         </label>
       </div>
       <% } else{ %>
         <div id="editPermissionField" class="mb-4">
           <label class="inline-flex items-center">
-            <input type="checkbox" id="editPermissionCheckbox" class="mr-2">
+            <input type="checkbox" name="edit" id="editPermissionCheckbox" class="mr-2">
             Allow edit permissions ? - previously this file can't be edited
           </label>
         </div>
