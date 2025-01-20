@@ -4,12 +4,14 @@ require('./config/mongoose')
 const flash = require('connect-flash')
 const session = require('express-session');
 const parse = require('body-parser');
+const morgan = require('morgan');
 
 const userModels =require('./models/user.models');
 const hisaabModels = require('./models/hisaab.models');
 
-
 app.set('view engine' ,'ejs');
+
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(parse.urlencoded({extended:true}))
@@ -29,19 +31,22 @@ app.get('/',(req,res)=>{
 app.post('/login', async (req,res)=>{
     let{username,password} =  req.body
     let user = await userModels.findOne({name:username})
+    
+    try{
     if(!user){
         req.flash('warn',"wrong password or username")
-        res.redirect('/')
+        return res.redirect('/')
     }
 
-    if(user.password == password){
-            res.redirect('/home')
-        }
-        else {
+    if(user.password == password) return res.redirect('/home')
+        
+    else {
             req.flash('warn',"wrong password or username")
-            res.redirect('/');
+            return res.redirect('/');
         }
-    
+    } catch(err){
+        res.send(err);
+    }  
 })
 
 app.get("/signup",(req,res)=>{
@@ -57,7 +62,7 @@ app.post('/signup', async (req,res)=>{
             email:email,
             password:confirmPassword
         })
-        res.redirect('/home')
+        return res.redirect('/home')
 
      } else{
             req.flash('warn',"password not matched")
@@ -266,7 +271,7 @@ app.get("/delete/:name", async (req,res)=>{
 
 
 app.listen(5001,()=>{
-    console.log("Server is running on port 5001");
+    console.log(`http://localhost:5001`);
 })
 
 
