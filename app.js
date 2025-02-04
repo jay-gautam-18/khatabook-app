@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+require('dotenv').config()
 require('./config/mongoose')
 const flash = require('connect-flash')
 const session = require('express-session');
@@ -21,8 +22,8 @@ app.use(session({
 }))
 app.use(flash());
 app.use('/', indexRoutes )
-app.listen(5001,()=>{
-    console.log(`http://localhost:5001`);
+app.listen(process.env.PORT,()=>{
+    console.log(`http://localhost:${process.env.PORT}`);
 })
 
 
